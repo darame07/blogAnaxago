@@ -9,4 +9,4 @@ Install
 
   * app/console doctrine:fixtures:load
 
-  * You can test an admin user using login `root` and pass `root`
+  * You can test an admin user using login `root` and pass `root`
