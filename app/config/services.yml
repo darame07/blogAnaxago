@@ -1,0 +1,21 @@
+# Learn more about services, parameters and containers at
+# https://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+services:
+    app.blog_post_repository:
+            class: AppBundle\Repository\BlogPostRepository
+            factory_service: doctrine.orm.entity_manager
+            factory_method:  getRepository
+            arguments:
+                        - "AppBundle:BlogPost"
+
+    app.blog_post_manager:
+            class: AppBundle\Manager\BlogPostManager
+            arguments: ['@app.blog_post_repository']
+
+    app.blog_post_form:
+            class: AppBundle\Form\BlogPostType
+            tags:
+                - { name: form.type, alias: blog_post }

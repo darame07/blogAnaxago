@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Administration</h1>
+    <a href="{{ path('homepage') }}">Back to homepage</a>
+    <a href="{{ path('add_post') }}">Add post</a>
+    <div id="posts">
+        {% for post in posts %}
+            <div id="post">
+                <h2>
+                    {{ post.title }}, {{ post.createdAt|date("m/d/Y") }}
+                    <a href="{{ path('modify_post', { id: post.id }) }}">edit</a>
+                    <a href="{{ path('delete_post', { id: post.id }) }}">delete</a>
+                </h2>
+                <p>{{ post.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
